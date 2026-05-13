@@ -118,15 +118,15 @@ import { m } from '../paraglide/messages.js';
 
       <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-5">
         {[
-          { src: '/images/food-instagram-1.jpg', alt: 'Bovenaanzicht van het lunchaanbod bij Stoet', tall: false },
-          { src: '/images/unsplash/sandwich-1.jpg', alt: 'Versgebakken sandwich op een bord', tall: true },
-          { src: '/images/unsplash/toast-greens.jpg', alt: 'Open boterham met groenten', tall: false },
-          { src: '/images/unsplash/brunch-spread.jpg', alt: 'Brunchtafel met meerdere borden', tall: false },
-          { src: '/images/unsplash/dessert.jpg', alt: 'Zoete lekkernij op een wit bord', tall: true },
-          { src: '/images/unsplash/bread-2.jpg', alt: 'Ambachtelijk gebakken brood', tall: false },
+          { src: '/images/food-instagram-1.jpg', alt: 'Bovenaanzicht van het lunchaanbod bij Stoet' },
+          { src: '/images/unsplash/sandwich-1.jpg', alt: 'Versgebakken sandwich op een bord' },
+          { src: '/images/unsplash/toast-greens.jpg', alt: 'Open boterham met groenten' },
+          { src: '/images/unsplash/brunch-spread.jpg', alt: 'Brunchtafel met meerdere borden' },
+          { src: '/images/unsplash/dessert.jpg', alt: 'Zoete lekkernij op een wit bord' },
+          { src: '/images/unsplash/bread-2.jpg', alt: 'Ambachtelijk gebakken brood' },
         ].map((img, i) => (
           <div
-            class:list={['reveal overflow-hidden rounded-md', img.tall ? 'row-span-2 aspect-[3/4]' : 'aspect-[4/5]']}
+            class="reveal overflow-hidden rounded-md aspect-[4/5]"
             style={`transition-delay: ${i * 60}ms`}
           >
             <img src={img.src} alt={img.alt} loading="lazy" class="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-700" />

@@ -6,24 +6,26 @@
   automatically via the @theme inline block.
 */
 @theme inline {
-  /* Surface */
-  --color-paper: #faf6ef;
-  --color-paper-warm: #f1eade;
-  --color-line: #e5dccc;
-  --color-muted: #6e5f54;
+  /* Surface — lavender body with white surfaces, matching the source brand */
+  --color-paper: #c8b1da;
+  --color-paper-warm: #ffffff;
+  --color-paper-soft: #efe4f1;
+  --color-line: #b39bca;
+  --color-line-soft: #d8c4e4;
+  --color-muted: #5f5762;
 
   /* Ink */
-  --color-ink: #1a1411;
-  --color-ink-soft: #2a211c;
+  --color-ink: #0c0a10;
+  --color-ink-soft: #1f1b25;
 
-  /* Primary (espresso, used for body/CTA) */
-  --color-primary: #2a211c;
-  --color-primary-dark: #1a1411;
-  --color-on-primary: #faf6ef;
+  /* Primary CTA — black, the original Stoet button color */
+  --color-primary: #0c0a10;
+  --color-primary-dark: #000000;
+  --color-on-primary: #ffffff;
 
-  /* Accent (refined lavender — sparingly) */
-  --color-accent: #9c7fbe;
-  --color-accent-soft: #cdbbe2;
+  /* Accent — a deeper lavender for hover/eyebrow moments */
+  --color-accent: #7d5fa3;
+  --color-accent-soft: #b39bca;
 
   /* Typography */
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
@@ -72,7 +74,7 @@ body {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--color-muted);
+  color: var(--color-ink-soft);
 }
 
 .section-line {
@@ -140,12 +142,13 @@ body {
   transform: translateY(-1px);
 }
 .btn-secondary {
-  background: var(--color-paper-warm);
+  background: transparent;
   color: var(--color-ink);
-  border-color: var(--color-line);
+  border-color: var(--color-ink);
 }
 .btn-secondary:hover {
-  background: var(--color-line);
+  background: var(--color-ink);
+  color: var(--color-on-primary);
 }
 .btn-ghost {
   background: transparent;
@@ -169,5 +172,5 @@ body {
   display: inline-block;
   width: 36px;
   height: 2px;
-  background: var(--color-accent);
+  background: var(--color-ink);
 }
