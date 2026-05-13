@@ -1,0 +1,45 @@
+{
+  "home.hero": {
+    "src": "/images/hero-food.jpg",
+    "alt": "Overhead spread: gegrilde panini, open boterham met prosciutto en brie, en een acai bowl bij Stoet Enschede",
+    "source": "original"
+  },
+  "home.intro": {
+    "src": "/images/food-instagram-2.jpg",
+    "alt": "Verse croissant met aardbeien en blauwe bessen in een kokosnoot, geserveerd op een houten plank",
+    "source": "original"
+  },
+  "home.feature.bread": {
+    "src": "/images/unsplash/bread-1.jpg",
+    "alt": "Twee versgebakken broden op een houten werkblad",
+    "source": "unsplash:bread,sourdough,bakery"
+  },
+  "home.gallery": [
+    { "src": "/images/food-instagram-1.jpg", "alt": "Bovenaanzicht van het lunchaanbod bij Stoet: yoghurt parfaits, bowls en een warme wok-schotel", "source": "original" },
+    { "src": "/images/unsplash/sandwich-1.jpg", "alt": "Versgebakken sandwich op een bord", "source": "unsplash:sandwich,brunch,cafe" },
+    { "src": "/images/unsplash/toast-greens.jpg", "alt": "Open boterham met verse groenten op donker brood", "source": "unsplash:toast,brunch,fresh" },
+    { "src": "/images/unsplash/brunch-spread.jpg", "alt": "Brunchtafel met meerdere borden en koffie", "source": "unsplash:brunch,table,spread" },
+    { "src": "/images/unsplash/dessert.jpg", "alt": "Zoete lekkernij op een wit bord", "source": "unsplash:dessert,sweet,plate" },
+    { "src": "/images/unsplash/bread-2.jpg", "alt": "Ambachtelijk gebakken brood", "source": "unsplash:bread,artisan,bakery" }
+  ],
+  "menu.hero": {
+    "src": "/images/unsplash/bread-2.jpg",
+    "alt": "Ambachtelijk gebakken brood — een dagelijks gebruik bij Stoet",
+    "source": "unsplash:bread,artisan,bakery"
+  },
+  "about.hero": {
+    "src": "/images/unsplash/cafe-interior-1.jpg",
+    "alt": "Warm verlicht café-interieur met houten meubilair",
+    "source": "unsplash:cafe,interior,warm,wood"
+  },
+  "about.feature": {
+    "src": "/images/food-instagram-2.jpg",
+    "alt": "Verse croissant met aardbeien in een kokosnoot, bovenaanzicht",
+    "source": "original"
+  },
+  "contact.hero": {
+    "src": "/images/unsplash/cafe-interior-2.jpg",
+    "alt": "Café-interieur, daglicht door de ramen",
+    "source": "unsplash:cafe,interior,daylight"
+  }
+}

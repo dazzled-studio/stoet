@@ -1,0 +1,121 @@
+---
+import { m } from '../paraglide/messages.js';
+
+interface Props {
+  transparent?: boolean;
+}
+const { transparent = false } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+const links: { href: string; label: string }[] = [
+  { href: '/', label: m.nav_home() },
+  { href: '/menu', label: m.nav_menu() },
+  { href: '/over-ons', label: m.nav_about() },
+  { href: '/contact', label: m.nav_contact() },
+];
+---
+<header
+  id="site-nav"
+  data-transparent={transparent ? 'true' : 'false'}
+  class:list={[
+    'fixed top-0 left-0 right-0 z-50 transition-colors duration-300',
+    transparent ? 'text-paper' : 'text-ink bg-paper border-b border-line',
+  ]}
+  aria-label={m.nav_menu_aria()}
+>
+  <div class="max-w-[1300px] mx-auto px-5 lg:px-10 h-20 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3 shrink-0" aria-label={m.nav_brand()}>
+      <img
+        src="/images/logo.png"
+        alt={m.nav_brand()}
+        class="h-7 w-auto site-logo"
+        width="180"
+        height="60"
+      />
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-10">
+      {links.map((l) => {
+        const active = path === l.href || (l.href !== '/' && path.startsWith(l.href));
+        return (
+          <a
+            href={l.href}
+            class:list={[
+              'text-sm font-medium tracking-[0.04em] transition-opacity',
+              active ? 'opacity-100' : 'opacity-70 hover:opacity-100',
+            ]}
+          >
+            {l.label}
+          </a>
+        );
+      })}
+      <a href="/menu" class="btn btn-primary text-xs">{m.common_view_menu()}</a>
+    </nav>
+
+    <button
+      id="nav-toggle"
+      class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+      aria-label={m.common_open_menu()}
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span class="block w-5 h-px bg-current"></span>
+      <span class="block w-5 h-px bg-current"></span>
+      <span class="block w-5 h-px bg-current"></span>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden bg-paper text-ink border-t border-line">
+    <div class="px-5 py-6 flex flex-col gap-1">
+      {links.map((l) => {
+        const active = path === l.href || (l.href !== '/' && path.startsWith(l.href));
+        return (
+          <a
+            href={l.href}
+            class:list={[
+              'text-base font-medium py-3 border-b border-line/60',
+              active ? 'text-ink' : 'text-muted',
+            ]}
+          >
+            {l.label}
+          </a>
+        );
+      })}
+      <a href="/menu" class="btn btn-primary mt-4 self-start">{m.common_view_menu()}</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  /* Inverted logo treatment when nav is transparent over a dark photo */
+  #site-nav[data-transparent='true'][data-scrolled='false'] .site-logo {
+    filter: brightness(0) invert(1);
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-nav') as HTMLElement | null;
+  const mobileMenu = document.getElementById('mobile-menu');
+  const toggle = document.getElementById('nav-toggle');
+
+  function setNavStyle() {
+    if (!header) return;
+    const isTransparent = header.dataset.transparent === 'true';
+    const scrolled = window.scrollY > 30;
+    header.dataset.scrolled = scrolled ? 'true' : 'false';
+    if (isTransparent && !scrolled) {
+      header.classList.remove('bg-paper', 'text-ink', 'border-b', 'border-line');
+      header.classList.add('text-paper');
+    } else {
+      header.classList.add('bg-paper', 'text-ink', 'border-b', 'border-line');
+      header.classList.remove('text-paper');
+    }
+  }
+  setNavStyle();
+  window.addEventListener('scroll', setNavStyle, { passive: true });
+
+  toggle?.addEventListener('click', () => {
+    const isHidden = mobileMenu?.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', String(!isHidden));
+  });
+</script>

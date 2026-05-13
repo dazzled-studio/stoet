@@ -1,0 +1,104 @@
+---
+import Base from '../layouts/Base.astro';
+import { m } from '../paraglide/messages.js';
+
+const mm = m as unknown as Record<string, () => string>;
+const values = [
+  { titleKey: 'about_value_1_title', bodyKey: 'about_value_1_body' },
+  { titleKey: 'about_value_2_title', bodyKey: 'about_value_2_body' },
+  { titleKey: 'about_value_3_title', bodyKey: 'about_value_3_body' },
+  { titleKey: 'about_value_4_title', bodyKey: 'about_value_4_body' },
+];
+---
+<Base title={`${m.nav_about()}. ${m.site_title()}`} description={m.about_hero_sub()}>
+  <!-- HERO -->
+  <section class="relative h-[60vh] min-h-[420px] overflow-hidden">
+    <img src="/images/unsplash/cafe-interior-1.jpg" alt={m.about_hero_headline()} class="absolute inset-0 w-full h-full object-cover" fetchpriority="high" width="1800" height="2400" />
+    <div class="absolute inset-0 bg-gradient-to-b from-ink/20 via-ink/10 to-ink/65"></div>
+    <div class="relative h-full max-w-[1300px] mx-auto px-5 lg:px-10 flex items-end pb-16 text-paper">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <span class="accent-rule" style="background: var(--color-accent-soft)"></span>
+          <span class="eyebrow !text-paper/80">{m.about_hero_eyebrow()}</span>
+        </div>
+        <h1 class="headline font-display text-[clamp(2.5rem,6vw,5rem)] max-w-3xl">
+          {m.about_hero_headline()}
+        </h1>
+        <p class="mt-4 text-paper/85 text-lg max-w-xl">{m.about_hero_sub()}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section class="bg-paper">
+    <div class="max-w-[1300px] mx-auto px-5 lg:px-10 py-24 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+      <div class="lg:col-span-7 reveal">
+        <h2 class="headline font-display text-[clamp(2rem,4vw,3.25rem)] mb-10">{m.about_story_headline()}</h2>
+        <div class="space-y-5 text-ink-soft text-[17px] leading-relaxed">
+          <p>{m.about_story_body_1()}</p>
+          <p>{m.about_story_body_2()}</p>
+          <p>{m.about_story_body_3()}</p>
+          <p class="text-ink font-medium">{m.about_story_body_4()}</p>
+        </div>
+      </div>
+      <div class="lg:col-span-5 reveal" style="transition-delay: 100ms">
+        <img src="/images/food-instagram-2.jpg" alt={m.about_story_headline()} class="w-full aspect-[4/5] object-cover rounded-md" loading="lazy" width="1280" height="1600" />
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="bg-paper-warm">
+    <div class="max-w-[1300px] mx-auto px-5 lg:px-10 py-24 lg:py-32">
+      <div class="max-w-2xl mb-14 reveal">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="accent-rule"></span>
+          <span class="eyebrow">{m.about_hero_eyebrow()}</span>
+        </div>
+        <h2 class="headline font-display text-[clamp(2rem,4vw,3.25rem)]">{m.about_values_headline()}</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {values.map((v, i) => (
+          <div class="bg-paper rounded-md border border-line p-8 reveal" style={`transition-delay: ${i * 80}ms`}>
+            <div class="font-display text-2xl text-ink mb-3">{mm[v.titleKey]()}</div>
+            <p class="text-ink-soft">{mm[v.bodyKey]()}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="bg-paper">
+    <div class="max-w-[1300px] mx-auto px-5 lg:px-10 py-24 lg:py-32">
+      <div class="max-w-2xl mb-14 reveal">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="accent-rule"></span>
+          <span class="eyebrow">{m.about_partners_eyebrow()}</span>
+        </div>
+        <h2 class="headline font-display text-[clamp(2rem,4vw,3.25rem)]">{m.about_partners_headline()}</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="reveal">
+          <div class="font-display text-3xl mb-3 text-ink">{m.about_partner_bakery_name()}</div>
+          <p class="text-ink-soft">{m.about_partner_bakery_body()}</p>
+        </div>
+        <div class="reveal" style="transition-delay: 80ms">
+          <div class="font-display text-3xl mb-3 text-ink">{m.about_partner_jpvandenbent_name()}</div>
+          <p class="text-ink-soft">{m.about_partner_jpvandenbent_body()}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-ink text-paper">
+    <div class="max-w-[1300px] mx-auto px-5 lg:px-10 py-20 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-10">
+      <h2 class="headline font-display text-[clamp(1.75rem,3.5vw,2.75rem)] max-w-xl">{m.home_visit_headline()}</h2>
+      <div class="flex flex-wrap gap-3">
+        <a href="/menu" class="btn btn-ghost">{m.common_view_menu()}</a>
+        <a href="/contact" class="btn btn-ghost">{m.common_email_us()}</a>
+      </div>
+    </div>
+  </section>
+</Base>

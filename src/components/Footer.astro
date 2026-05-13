@@ -1,0 +1,58 @@
+---
+import { m } from '../paraglide/messages.js';
+
+const year = new Date().getFullYear();
+---
+<footer class="bg-ink text-paper">
+  <div class="max-w-[1300px] mx-auto px-5 lg:px-10 py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-5">
+        <a href="/" class="inline-flex items-center" aria-label={m.nav_brand()}>
+          <img
+            src="/images/logo.png"
+            alt={m.nav_brand()}
+            class="h-9 w-auto"
+            style="filter: brightness(0) invert(1);"
+            width="220"
+            height="73"
+          />
+        </a>
+        <p class="text-paper/70 text-sm leading-relaxed max-w-md mt-6">
+          {m.footer_tagline()} {m.footer_built_in()}.
+        </p>
+      </div>
+
+      <div class="lg:col-span-3">
+        <div class="eyebrow !text-paper/50 mb-4">{m.contact_location_label()}</div>
+        <address class="not-italic text-sm leading-relaxed text-paper/80">
+          {m.contact_address_street()}<br />
+          {m.contact_address_postal_city()}<br />
+          <a href={`tel:${m.contact_phone_tel()}`} class="hover:text-paper transition-colors mt-2 inline-block">
+            {m.contact_phone_display()}
+          </a><br />
+          <a href={`mailto:${m.contact_email()}`} class="hover:text-paper transition-colors link-line">
+            {m.contact_email()}
+          </a>
+        </address>
+      </div>
+
+      <div class="lg:col-span-4">
+        <div class="eyebrow !text-paper/50 mb-4">{m.contact_hours_label()}</div>
+        <p class="text-sm leading-relaxed text-paper/80">
+          {m.contact_hours_value()}.<br />
+          {m.contact_hours_sunday()}.
+        </p>
+        <div class="flex gap-5 mt-6 text-sm">
+          <a href="https://instagram.com/stoetenschede" rel="noopener noreferrer" target="_blank" class="text-paper/70 hover:text-paper transition-colors link-line">{m.common_visit_instagram()}</a>
+          <a href="https://www.facebook.com/stoetenschede" rel="noopener noreferrer" target="_blank" class="text-paper/70 hover:text-paper transition-colors link-line">{m.common_visit_facebook()}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-line bg-paper/10 mt-16 mb-6"></div>
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs text-paper/50">
+      <p>{m.footer_copyright({ year: String(year) })}</p>
+      <a href={`mailto:${m.contact_email()}`} class="hover:text-paper">{m.contact_email()}</a>
+    </div>
+  </div>
+</footer>

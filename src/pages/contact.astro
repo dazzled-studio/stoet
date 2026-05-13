@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+import { m } from '../paraglide/messages.js';
+---
+<Base title={`${m.nav_contact()}. ${m.site_title()}`} description={m.contact_hero_sub()}>
+  <!-- HERO -->
+  <section class="relative pt-32 pb-16 lg:pt-40 lg:pb-20 bg-paper">
+    <div class="max-w-[1300px] mx-auto px-5 lg:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div class="lg:col-span-7">
+        <div class="flex items-center gap-3 mb-5">
+          <span class="accent-rule"></span>
+          <span class="eyebrow">{m.contact_hero_eyebrow()}</span>
+        </div>
+        <h1 class="headline font-display text-[clamp(2.5rem,6vw,5rem)] mb-6">
+          {m.contact_hero_headline()}
+        </h1>
+        <p class="text-ink-soft max-w-xl text-lg leading-relaxed">
+          {m.contact_hero_sub()}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS GRID -->
+  <section class="bg-paper-warm">
+    <div class="max-w-[1300px] mx-auto px-5 lg:px-10 py-20 grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-paper rounded-md border border-line p-8 reveal">
+        <div class="eyebrow mb-3">{m.contact_visit_headline()}</div>
+        <address class="not-italic text-lg text-ink leading-relaxed">
+          {m.contact_address_street()}<br />
+          {m.contact_address_postal_city()}
+        </address>
+        <p class="text-muted text-sm mt-3">{m.contact_location_label()}</p>
+        <a href="https://maps.google.com/?q=Pijpenstraat+15+Enschede" target="_blank" rel="noopener" class="link-line mt-5 inline-block text-sm font-medium">
+          {m.common_directions()}
+        </a>
+      </div>
+
+      <div class="bg-paper rounded-md border border-line p-8 reveal" style="transition-delay: 80ms">
+        <div class="eyebrow mb-3">{m.contact_hours_label()}</div>
+        <p class="text-ink text-lg">{m.contact_hours_value()}.</p>
+        <p class="text-muted text-sm mt-2">{m.contact_hours_sunday()}.</p>
+      </div>
+
+      <div class="bg-paper rounded-md border border-line p-8 reveal" style="transition-delay: 160ms">
+        <div class="eyebrow mb-3">{m.common_call_us()}</div>
+        <a href={`tel:${m.contact_phone_tel()}`} class="font-display text-2xl text-ink link-line">{m.contact_phone_display()}</a>
+        <p class="mt-4">
+          <a href={`mailto:${m.contact_email()}`} class="link-line text-sm">{m.contact_email()}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM + RESERVATIONS -->
+  <section class="bg-paper">
+    <div class="max-w-[1300px] mx-auto px-5 lg:px-10 py-24 lg:py-32 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+      <div class="lg:col-span-7 reveal">
+        <h2 class="headline font-display text-[clamp(2rem,4vw,3rem)] mb-5">{m.contact_form_headline()}</h2>
+        <p class="text-ink-soft mb-10 max-w-xl">{m.contact_form_intro()}</p>
+
+        <form
+          method="POST"
+          action="mailto:contact@stoet-enschede.nl"
+          enctype="text/plain"
+          class="space-y-5"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <label class="block">
+              <span class="block text-sm font-medium mb-2">{m.contact_form_name_label()}</span>
+              <input
+                type="text"
+                name="name"
+                required
+                placeholder={m.contact_form_name_placeholder()}
+                class="w-full px-4 py-3 bg-paper border border-line rounded-sm focus:border-ink outline-none transition"
+              />
+            </label>
+            <label class="block">
+              <span class="block text-sm font-medium mb-2">{m.contact_form_email_label()}</span>
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder={m.contact_form_email_placeholder()}
+                class="w-full px-4 py-3 bg-paper border border-line rounded-sm focus:border-ink outline-none transition"
+              />
+            </label>
+          </div>
+          <label class="block">
+            <span class="block text-sm font-medium mb-2">{m.contact_form_subject_label()}</span>
+            <input
+              type="text"
+              name="subject"
+              placeholder={m.contact_form_subject_placeholder()}
+              class="w-full px-4 py-3 bg-paper border border-line rounded-sm focus:border-ink outline-none transition"
+            />
+          </label>
+          <label class="block">
+            <span class="block text-sm font-medium mb-2">{m.contact_form_message_label()}</span>
+            <textarea
+              name="message"
+              rows="6"
+              required
+              placeholder={m.contact_form_message_placeholder()}
+              class="w-full px-4 py-3 bg-paper border border-line rounded-sm focus:border-ink outline-none transition resize-y"
+            ></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary">{m.contact_form_submit()}</button>
+          <p class="text-muted text-xs mt-3">{m.contact_form_note()}</p>
+        </form>
+      </div>
+
+      <aside class="lg:col-span-5 space-y-10 reveal" style="transition-delay: 100ms">
+        <div class="bg-paper-warm rounded-md p-8 border border-line">
+          <div class="eyebrow mb-3">{m.contact_reservations_headline()}</div>
+          <h3 class="font-display text-2xl text-ink mb-3">{m.contact_reservations_headline()}</h3>
+          <p class="text-ink-soft">{m.contact_reservations_body()}</p>
+        </div>
+
+        <div class="bg-paper-warm rounded-md p-8 border border-line">
+          <div class="eyebrow mb-3">{m.contact_jobs_headline()}</div>
+          <h3 class="font-display text-2xl text-ink mb-3">{m.contact_jobs_headline()}</h3>
+          <p class="text-ink-soft">{m.contact_jobs_body()}</p>
+          <a href={`mailto:${m.contact_email()}?subject=Open%20sollicitatie`} class="link-line mt-5 inline-block text-sm font-medium">{m.common_email_us()}</a>
+        </div>
+
+        <div class="bg-paper-warm rounded-md p-8 border border-line">
+          <div class="eyebrow mb-3">{m.contact_find_headline()}</div>
+          <h3 class="font-display text-2xl text-ink mb-3">{m.contact_find_headline()}</h3>
+          <p class="text-ink-soft">{m.contact_find_body()}</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>
